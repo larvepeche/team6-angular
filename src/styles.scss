@@ -1,31 +1,33 @@
 @import '/src/app/shared/variable.scss';
 
 :root {
-  --fs-xl: 3rem;
-  --fs-700: 2.2rem;
-  --fs-600: 1.75rem;
-  --fs-500: 1.25rem;
-  --fs-400: 1rem;
-  --header-height: 103px;
+    --fs-xl: 3rem;
+    --fs-700: 2.2rem;
+    --fs-600: 1.75rem;
+    --fs-500: 1.25rem;
+    --fs-400: 1rem;
+    --header-height: 103px;
+    --color-primary: #212529;
+    --color-disabled: #C4C4C4;
 }
 
 @media only screen and (max-width: 768px) {
-  :root {
-    --fs-xl: 2rem;
-    --fs-700: 1.6rem;
-    --fs-600: 1.3rem;
-    --fs-500: 1rem;
-    --fs-400: .9rem;
-  }
+    :root {
+        --fs-xl: 2rem;
+        --fs-700: 1.6rem;
+        --fs-600: 1.3rem;
+        --fs-500: 1rem;
+        --fs-400: .9rem;
+    }
 }
 
 html {
-  font-size: 18px;
+    font-size: 18px;
 }
 
 body {
-  font-family: 'Montserrat', sans-serif;
-  margin: 0;
-  //   background-color: $color-primary;
-  font-size: var(--fs-400);
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    //   background-color: $color-primary;
+    font-size: var(--fs-400);
 }

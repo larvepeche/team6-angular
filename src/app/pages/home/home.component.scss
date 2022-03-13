@@ -22,12 +22,13 @@
 
         .slide-indexes {
             display: flex;
+            margin: 30px 0 20px 0;
 
             .slide-i {
-                margin: 20px 0;
                 margin-right: 15px;
                 padding: 6px;
                 background-color: $color-disabled;
+                cursor: pointer;
             }
 
             .slide-i:last-of-type {

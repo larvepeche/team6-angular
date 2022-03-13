@@ -1,8 +1,8 @@
-$color-primary: #212529;
+$color-primary: var(--color-primary);
 // $color-secondary: #FADD7C;
 // $color-tertiary : #64AC81;
 // $color-4 : #338C83;
 // $color-accent : #2F4858;
-$color-disabled: #C4C4C4;
+$color-disabled: var(--color-disabled);
 // $color-fb: #473DF5;
 // $color-google: #4A4A4ACC
