@@ -1,10 +1,22 @@
-<div class="products-top">
-  <div class="product-header">
-    best seller
-  </div>
-  <div class="products-list">
-    <ng-container *ngFor="let product of products">
-      <app-product-card [product]="product"></app-product-card>
-    </ng-container>
-  </div>
+<div class="home">
+    <div class="banner">
+        <div class="slide">
+
+        </div>
+        <div class="slide-indexes">
+            <div id="slide-i-1" class="slide-i slide-active"></div>
+            <div id="slide-i-2" class="slide-i"></div>
+            <div id="slide-i-3" class="slide-i"></div>
+        </div>
+    </div>
+    <div class="products-top">
+        <div class="product-header">
+            best seller
+        </div>
+        <div class="products-list">
+            <ng-container *ngFor="let product of products">
+                <app-product-card [product]="product"></app-product-card>
+            </ng-container>
+        </div>
+    </div>
 </div>
