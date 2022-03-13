@@ -1,10 +1,12 @@
-<p>main works!</p>
-<ul class="nav">
-  <li class="nav-item">
-    <a class="nav-link" [routerLink]="'home'" routerLinkActive="active"> home </a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" [routerLink]="'products'" routerLinkActive="active"> products </a>
-  </li>
-</ul>
-<router-outlet></router-outlet>
+<div class="main-container">
+  <p>navbar</p>
+  <ul class="nav">
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="'home'" routerLinkActive="active"> home </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="'products'" routerLinkActive="active"> products </a>
+    </li>
+  </ul>
+  <router-outlet></router-outlet>
+</div>

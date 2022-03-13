@@ -1,0 +1,9 @@
+<ng-container *ngIf="product">
+  <div class="product-card">
+    <img src="{{ product.img }}" alt="{{ product.name }}">
+    <div class="card-body">
+      <p class="product-name">{{ product.name }}</p>
+      <p class="product-price">Ar {{ product.price | number: '1.2-2'}}</p>
+    </div>
+  </div>
+</ng-container>

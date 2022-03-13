@@ -1,1 +1,10 @@
-<p>home works!</p>
+<div class="products-top">
+  <div class="product-header">
+    best seller
+  </div>
+  <div class="products-list">
+    <ng-container *ngFor="let product of products">
+      <app-product-card [product]="product"></app-product-card>
+    </ng-container>
+  </div>
+</div>

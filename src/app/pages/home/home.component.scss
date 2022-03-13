@@ -1,0 +1,22 @@
+.products-top {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .product-header {
+    padding: 35px 0;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 10px;
+    font-size: var(--fs-500);
+  }
+
+  .products-list {
+    width: 75%;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 30px;
+    grid-gap: 30px;
+  }
+}
