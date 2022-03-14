@@ -7,6 +7,8 @@ import { LoginComponent } from './pages/auth/login/login.component';
 import { InscriptionComponent } from './pages/auth/inscription/inscription.component';
 import { MainComponent } from './pages/main/main.component';
 import { FooterComponent } from './shared/footer/footer.component';
+import { AuthComponent } from './pages/auth/auth.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -14,11 +16,13 @@ import { FooterComponent } from './shared/footer/footer.component';
         LoginComponent,
         InscriptionComponent,
         MainComponent,
-        FooterComponent
+        FooterComponent,
+        AuthComponent
     ],
     imports: [
         BrowserModule,
-        AppRoutingModule
+        AppRoutingModule,
+        ReactiveFormsModule
     ],
     providers: [],
     bootstrap: [AppComponent]

@@ -6,9 +6,11 @@
     --fs-600: 1.75rem;
     --fs-500: 1.25rem;
     --fs-400: 1rem;
+    --fs-300: .8rem;
     --header-height: 103px;
     --color-primary: #212529;
     --color-disabled: #C4C4C4;
+    --color-semi-disabled: #888;
 }
 
 @media only screen and (max-width: 768px) {
@@ -18,11 +20,13 @@
         --fs-600: 1.3rem;
         --fs-500: 1rem;
         --fs-400: .9rem;
+        --fs-300: .8rem;
     }
 }
 
 html {
     font-size: 18px;
+    background-color: #F2F2F2;
 }
 
 body {
@@ -31,3 +35,47 @@ body {
     //   background-color: $color-primary;
     font-size: var(--fs-400);
 }
+
+/* FORM STYLE */
+.form-group {
+    .form-item {
+        display: flex;
+        flex-direction: column;
+        padding: 15px 0;
+
+        label {
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            font-size: var(--fs-300);
+            font-weight: 700;
+            color: #888;
+        }
+
+        input {
+            padding: 15px 15px;
+            font-size: var(--fs-400);
+        }
+    }
+
+    .form-btn {
+        width: 100%;
+        padding: 20px 0;
+        margin-top: 15px;
+        border: 2px solid $color-primary;
+        color: $color-primary;
+        background-color: white;
+        font-size: var(--fs-400);
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        cursor: pointer;
+
+        &:hover {
+            color: white;
+            background-color: $color-primary;
+        }
+    }
+}
+
+/**/

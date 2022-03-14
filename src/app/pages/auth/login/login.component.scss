@@ -1,0 +1,10 @@
+@import 'src/app/shared/variable.scss';
+
+.login-container {
+    display: flex;
+    justify-content: center;
+
+    .form-group {
+        width: 75%;
+    }
+}

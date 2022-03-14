@@ -1,0 +1,17 @@
+<div class="auth-container">
+    <div class="auth-card">
+        <div class="card-header">
+            <span (click)="switchAuth(false)" [ngClass]="isLogin?'auth-selected':''">login</span>
+            <span (click)="switchAuth(true)" [ngClass]="isLogin?'':'auth-selected'">join</span>
+        </div>
+        <div class="card-body">
+            <ng-container *ngIf="isLogin; else inscription">
+                <app-login></app-login>
+            </ng-container>
+            <ng-template #inscription>
+                <app-inscription></app-inscription>
+            </ng-template>
+        </div>
+    </div>
+    <app-footer></app-footer>
+</div>
