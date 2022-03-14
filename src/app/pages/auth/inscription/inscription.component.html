@@ -1,1 +1,21 @@
-<p>inscription works!</p>
+<div class="inscription-container">
+    <form [formGroup]="inscriptionForm" (ngSubmit)="onConnect()" class="form-group">
+        <div class="form-item">
+            <label for="name">name :</label>
+            <input id="name" formControlName="name" type="name" />
+        </div>
+        <div class="form-item">
+            <label for="email">email :</label>
+            <input id="email" formControlName="email" type="email" />
+        </div>
+        <div class="form-item">
+            <label for="pwd">password :</label>
+            <input id="pwd" formControlName="pwd" type="password" />
+        </div>
+        <div class="form-item">
+            <label for="confPwd">confirm your password :</label>
+            <input id="confPwd" formControlName="confPwd" type="password" />
+        </div>
+        <button class="form-btn" type="submit">join us</button>
+    </form>
+</div>
