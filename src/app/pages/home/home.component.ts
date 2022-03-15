@@ -32,11 +32,11 @@ export class HomeComponent implements OnInit {
     }
 
     onClickMove(slideMove: boolean) {
-        const direction = (slideMove) ? 1 : -1;
+        let direction = (slideMove) ? 1 : -1;
         this.index += direction;
         if (this.index < 0) {
-            this.index = 0;
-            return;
+            this.index = this.slideNumber - 1;
+            direction = 1
         }
         let reset = false;
         if (this.index >= this.slideNumber) {
