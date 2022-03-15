@@ -36,3 +36,14 @@
     border-bottom-color: $color-primary !important;
     color: $color-primary !important;
 }
+
+.arrow-back {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    font-size: var(--fs-600);
+    padding: 10px;
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+}

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
     selector: 'app-auth',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./auth.component.scss']
 })
 export class AuthComponent implements OnInit {
+    faArrowLeft = faArrowLeft;
 
     isLogin: boolean = true;
 
