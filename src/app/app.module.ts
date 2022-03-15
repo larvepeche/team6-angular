@@ -10,6 +10,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { AuthComponent } from './pages/auth/auth.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { NavbarComponent } from './shared/navbar/navbar.component';
 
 @NgModule({
     declarations: [
@@ -18,7 +19,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
         InscriptionComponent,
         MainComponent,
         FooterComponent,
-        AuthComponent
+        AuthComponent,
+        NavbarComponent
     ],
     imports: [
         BrowserModule,
