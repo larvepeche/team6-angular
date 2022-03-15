@@ -1,0 +1,60 @@
+@import 'src/app/shared/variable.scss';
+
+:host {
+    display: flex;
+    justify-content: center;
+}
+
+.header-text {
+    padding: 35px 0;
+    margin-bottom: 10px;
+    // text-align: center;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 10px;
+    font-size: var(--fs-500);
+}
+
+.products-container {
+    width: 80%;
+
+    .products-list {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 30px;
+        grid-gap: 30px;
+    }
+
+    .product-pagination {
+        text-align: center;
+        padding: 30px 0;
+
+        .page-i {
+            width: 40px;
+            min-height: 30px;
+            line-height: 30px;
+            padding: 5px 10px;
+            display: inline-block;
+            text-transform: capitalize;
+            cursor: pointer;
+            text-decoration: none;
+            color: black;
+
+            &:first-of-type {
+                width: max-content;
+                border-right: 1px solid $color-disabled;
+                padding: 5px 15px;
+            }
+
+            &:last-of-type {
+                width: max-content;
+                border-left: 1px solid $color-disabled;
+                padding: 5px 15px;
+            }
+
+            &:hover {
+                background-color: $color-disabled;
+            }
+        }
+    }
+}

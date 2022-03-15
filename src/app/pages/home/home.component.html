@@ -13,10 +13,6 @@
         <div class="product-header">
             best seller
         </div>
-        <div class="products-list">
-            <ng-container *ngFor="let product of products">
-                <app-product-card [product]="product"></app-product-card>
-            </ng-container>
-        </div>
+        <app-products-list [products]="products"></app-products-list>
     </div>
 </div>

@@ -9,6 +9,7 @@ import { MainComponent } from './pages/main/main.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { AuthComponent } from './pages/auth/auth.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
     declarations: [
@@ -22,7 +23,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     imports: [
         BrowserModule,
         AppRoutingModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        FontAwesomeModule
     ],
     providers: [],
     bootstrap: [AppComponent]

@@ -1,1 +1,19 @@
-<p>products works!</p>
+<div class="products-container">
+    <div class="header-text">all products</div>
+    <app-products-list [products]="products"></app-products-list>
+    <div class="product-pagination">
+        <a class="page-i">
+            <fa-icon [icon]="faChevronLeft"></fa-icon>
+            prev
+        </a>
+        <a class="page-i">1</a>
+        <a class="page-i">2</a>
+        <a class="page-i">3</a>
+        <a class="page-i dots">...</a>
+        <a class="page-i">20</a>
+        <a class="page-i" href="">
+            next
+            <fa-icon [icon]="faChevronRight"></fa-icon>
+        </a>
+    </div>
+</div>
