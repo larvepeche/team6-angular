@@ -43,16 +43,22 @@ export class HomeComponent implements OnInit {
             reset = true;
             this.index = 0;
         }
-        this.translateSlide(direction, reset);
+        this.changeSlide(direction, reset);
     }
 
-    translateSlide(direction: number, reset: boolean) {
+    changeSlide(direction: number, reset: boolean) {
         if (!this.slides) return;
-        const elWidth = this.slides.nativeElement.offsetWidth;
-        let translateValue = 0;
-        if (!reset)
-            translateValue = (direction == 1) ? -1 * this.index * elWidth : (-1 * (this.index + 1) * elWidth + elWidth)
-        this.renderer.setStyle(this.slides.nativeElement, 'transform', `translate(${translateValue}px,0px)`);
+        // const elWidth = this.slides.nativeElement.offsetWidth;
+        // let translateValue = 0;
+        // if (!reset)
+        //     translateValue = (direction == 1) ? -1 * this.index * elWidth : (-1 * (this.index + 1) * elWidth + elWidth)
+        // this.renderer.setStyle(this.slides.nativeElement, 'transform', `translate(${translateValue}px,0px)`);
+
+        const el = this.slides?.nativeElement as HTMLElement;
+        Array.from(el.children).forEach(element => {
+            element.classList.remove("slide-active");
+        });
+        el.children[this.index].classList.add("slide-active");
         this.changeSlideIndex();
     }
 

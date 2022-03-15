@@ -1,9 +1,24 @@
 <div class="home">
     <div class="banner">
         <div id="slides" #slides class="slides">
-            <div id="slide-1" class="slide slide-active"></div>
-            <div id="slide-2" class="slide"></div>
-            <div id="slide-3" class="slide"></div>
+            <div id="slide-1" class="slide slide-active">
+                <img src="assets/amanda-vick-ohWf6YuzOQk-unsplash.jpg" alt="freestocks">
+                <div class="slide-content">
+                    <span>Lorem ipsum dolor sit amet.</span>
+                </div>
+            </div>
+            <div id="slide-2" class="slide">
+                <img src="assets/amanda-vick-ohWf6YuzOQk-unsplash.jpg" alt="freestocks">
+                <div class="slide-content">
+                    <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+                </div>
+            </div>
+            <div id="slide-3" class="slide">
+                <img src="assets/amanda-vick-ohWf6YuzOQk-unsplash.jpg" alt="freestocks">
+                <div class="slide-content">
+                    <span>Lorem ipsum dolor sit amet, consectetur.</span>
+                </div>
+            </div>
         </div>
         <span id="left-btn" class="slide-btn" (click)="onClickMove(false)">
             <fa-icon [icon]="faChevronLeft"></fa-icon>
