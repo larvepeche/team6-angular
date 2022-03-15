@@ -7,6 +7,7 @@ import { ProductsComponent } from '../products/products.component';
 import { ProductCardComponent } from 'src/app/components/product-card/product-card.component';
 import { ProductsListComponent } from 'src/app/components/products-list/products-list.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { SectionHeaderComponent } from 'src/app/components/section-header/section-header.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
         HomeComponent,
         ProductsComponent,
         ProductCardComponent,
-        ProductsListComponent
+        ProductsListComponent,
+        SectionHeaderComponent
     ],
     imports: [
         CommonModule,

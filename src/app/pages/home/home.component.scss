@@ -72,14 +72,6 @@
         flex-direction: column;
         justify-content: center;
 
-        .product-header {
-            padding: 35px 0;
-            text-transform: uppercase;
-            font-weight: 700;
-            letter-spacing: 10px;
-            font-size: var(--fs-500);
-        }
-
         .products-list {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
