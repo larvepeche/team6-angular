@@ -14,7 +14,12 @@
                 <a class="nav-link" [routerLink]="'products'" routerLinkActive="active"> products </a>
             </div>
             <div class="menu">
-                <a class="nav-link" [routerLink]="'connect'" routerLinkActive="active"> connect </a>
+                <a class="nav-link" [routerLink]="'connect'" routerLinkActive="active">
+                    <fa-icon [icon]="faCartArrowDown"></fa-icon>
+                </a>
+                <a class="nav-link" [routerLink]="'connect'" routerLinkActive="active">
+                    <fa-icon [icon]="faUser"></fa-icon>
+                </a>
             </div>
             <!-- <div class="menu">
                 <span><a>menu1</a></span>
