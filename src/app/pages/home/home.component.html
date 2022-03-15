@@ -1,12 +1,20 @@
 <div class="home">
     <div class="banner">
-        <div class="slide">
-
+        <div id="slides" #slides class="slides">
+            <div id="slide-1" class="slide slide-active"></div>
+            <div id="slide-2" class="slide"></div>
+            <div id="slide-3" class="slide"></div>
         </div>
-        <div class="slide-indexes">
-            <div id="slide-i-1" class="slide-i slide-active"></div>
-            <div id="slide-i-2" class="slide-i"></div>
-            <div id="slide-i-3" class="slide-i"></div>
+        <span id="left-btn" class="slide-btn" (click)="onClickMove(false)">
+            <fa-icon [icon]="faChevronLeft"></fa-icon>
+        </span>
+        <span id="right-btn" class="slide-btn" (click)="onClickMove(true)">
+            <fa-icon [icon]="faChevronRight"></fa-icon>
+        </span>
+        <div id="slide-indexes" #slideIndexes class="slide-indexes">
+            <div class="slide-i slide-i-active"><span></span></div>
+            <div class="slide-i"><span></span></div>
+            <div class="slide-i"><span></span></div>
         </div>
     </div>
     <div class="products-top">
