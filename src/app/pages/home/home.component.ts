@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef, Renderer2 } from '@angular/core';
 import { IProduct } from 'src/app/models/iproduct';
+import { IBanner, UtilService } from 'src/app/services/util-service/util.service';
 
 @Component({
     selector: 'app-home',
@@ -11,7 +12,8 @@ export class HomeComponent implements OnInit {
     @ViewChild("slides") slides?: ElementRef;
     @ViewChild("slideIndexes") slideIndexes?: ElementRef;
     index: number = 0;
-    slideNumber: number = 3;
+    slideNumber: number = 0;
+    slideList: IBanner[] = [];
 
     products: IProduct[] = [
         { id: 1, img: "assets/bao-bao-GREEBEtyR9Y-unsplash.jpg", name: "bao bao GREEBE", price: 50000 },
@@ -22,10 +24,18 @@ export class HomeComponent implements OnInit {
     ];
 
     constructor(
-        private renderer: Renderer2
+        private renderer: Renderer2,
+        private utilService: UtilService
     ) { }
 
     ngOnInit(): void {
+        this.utilService.getBanner().subscribe(resp => {
+            this.slideList = resp;
+            this.slideList.map(slide => {
+                slide.image = this.utilService.apiUrl + "/static/banner-image/" + slide.id + "-" + slide.image;
+            });
+            this.slideNumber = this.slideList.length;
+        });
     }
 
     onClickMove(slideMove: boolean) {
