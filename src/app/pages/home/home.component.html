@@ -1,13 +1,15 @@
 <div class="home">
     <div class="banner">
         <div id="slides" #slides class="slides">
-            <div id="slide-1" class="slide slide-active">
-                <img src="assets/amanda-vick-ohWf6YuzOQk-unsplash.jpg" alt="freestocks">
-                <div class="slide-content">
-                    <span>Lorem ipsum dolor sit amet.</span>
+            <ng-container *ngFor="let slide of slideList">
+                <div id="{{ 'slide-' + slide.id }}" class="slide" [ngClass]="slide.id==1?'slide-active':''">
+                    <img src="{{slide.image}}" alt="{{slide.textContent}}">
+                    <div class="slide-content">
+                        <span>{{slide.textContent}}</span>
+                    </div>
                 </div>
-            </div>
-            <div id="slide-2" class="slide">
+            </ng-container>
+            <!-- <div id="slide-2" class="slide">
                 <img src="assets/amanda-vick-ohWf6YuzOQk-unsplash.jpg" alt="freestocks">
                 <div class="slide-content">
                     <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
@@ -18,18 +20,20 @@
                 <div class="slide-content">
                     <span>Lorem ipsum dolor sit amet, consectetur.</span>
                 </div>
-            </div>
+            </div> -->
         </div>
         <span id="left-btn" class="slide-btn" (click)="onClickMove(false)">
-            <fa-icon [icon]="faChevronLeft"></fa-icon>
+            <mat-icon class="icon icon-lg">chevron_left</mat-icon>
         </span>
         <span id="right-btn" class="slide-btn" (click)="onClickMove(true)">
-            <fa-icon [icon]="faChevronRight"></fa-icon>
+            <mat-icon class="icon icon-lg">chevron_right</mat-icon>
         </span>
         <div id="slide-indexes" #slideIndexes class="slide-indexes">
-            <div class="slide-i slide-i-active"></div>
-            <div class="slide-i"></div>
-            <div class="slide-i"></div>
+            <ng-container *ngFor="let slide of slideList">
+                <div class="slide-i" [ngClass]="slide.id==1?'slide-i-active':''"></div>
+            </ng-container>
+            <!-- <div class="slide-i slide-i-active"></div>
+            <div class="slide-i"></div> -->
         </div>
     </div>
     <div class="products-top">

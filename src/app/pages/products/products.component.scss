@@ -6,6 +6,8 @@
 }
 
 .products-container {
+    width: 100%;
+
     .products-list {
         display: grid;
         grid-template-columns: repeat(5, 1fr);
@@ -14,15 +16,18 @@
     }
 
     .product-pagination {
-        text-align: center;
         padding: 30px 0;
+        display: flex;
+        justify-content: center;
 
         .page-i {
+            display: flex;
+            align-items: center;
+            justify-content: center;
             width: 40px;
             min-height: 30px;
             line-height: 30px;
             padding: 5px 10px;
-            display: inline-block;
             text-transform: capitalize;
             cursor: pointer;
             text-decoration: none;

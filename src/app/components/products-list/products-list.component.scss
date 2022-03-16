@@ -1,6 +1,9 @@
 .products-list {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    // display: grid;
+    // grid-template-columns: repeat(5, 1fr);
+    // grid-gap: 30px;
+    display: flex;
     gap: 30px;
-    grid-gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
 }

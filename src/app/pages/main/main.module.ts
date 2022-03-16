@@ -6,9 +6,9 @@ import { HomeComponent } from '../home/home.component';
 import { ProductsComponent } from '../products/products.component';
 import { ProductCardComponent } from 'src/app/components/product-card/product-card.component';
 import { ProductsListComponent } from 'src/app/components/products-list/products-list.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SectionHeaderComponent } from 'src/app/components/section-header/section-header.component';
 import { CartComponent } from '../cart/cart.component';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @NgModule({
@@ -23,7 +23,7 @@ import { CartComponent } from '../cart/cart.component';
     imports: [
         CommonModule,
         MainRoutingModule,
-        FontAwesomeModule
+        MatIconModule
     ]
 })
 export class MainModule { }

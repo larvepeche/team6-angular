@@ -1,1 +1,4 @@
-<p>Nothing!</p>
+<div class="cart-container">
+    <app-section-header headerText="cart products"></app-section-header>
+    <app-products-list [products]="products" (rmProductInCart)="rmProductInCart()"></app-products-list>
+</div>

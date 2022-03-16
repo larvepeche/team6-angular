@@ -79,4 +79,19 @@ body {
     }
 }
 
-/**/
+.icon {
+    height: auto !important;
+    width: auto !important;
+
+    &.icon-lg {
+        font-size: 4rem;
+    }
+
+    &.icon-md {
+        font-size: 2rem;
+    }
+
+    &.icon-sm {
+        font-size: 1.5rem;
+    }
+}

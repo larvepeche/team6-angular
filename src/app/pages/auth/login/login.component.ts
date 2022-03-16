@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { IUser } from 'src/app/models/iuser';
+import { UserService } from 'src/app/services/user-service/user.service';
 
 @Component({
     selector: 'app-login',
@@ -8,16 +11,27 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
     loginForm = new FormGroup({
-        email: new FormControl(''),
+        username: new FormControl(''),
         pwd: new FormControl('')
     });
 
-    constructor() { }
+    user?: IUser;
+
+    constructor(
+        private userService: UserService,
+        private router: Router
+    ) { }
 
     ngOnInit(): void {
     }
 
     onConnect() {
-        console.log("submit login");
+        this.user = {
+            username: this.loginForm.get('username')?.value,
+            password: this.loginForm.get('pwd')?.value
+        }
+        this.userService.login(this.user, () => {
+            this.router.navigate(['/home']);
+        });
     }
 }

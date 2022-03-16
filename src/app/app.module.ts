@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,8 +10,9 @@ import { MainComponent } from './pages/main/main.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { AuthComponent } from './pages/auth/auth.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NavbarComponent } from './shared/navbar/navbar.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
     declarations: [
@@ -26,7 +28,9 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
         BrowserModule,
         AppRoutingModule,
         ReactiveFormsModule,
-        FontAwesomeModule
+        NoopAnimationsModule,
+        MatIconModule,
+        HttpClientModule
     ],
     providers: [],
     bootstrap: [AppComponent]
