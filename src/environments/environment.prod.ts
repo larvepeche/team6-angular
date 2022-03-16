@@ -1,4 +1,4 @@
 export const environment = {
     production: true,
-    apiUrl: ""
+    apiUrl: "https://team6-grails.herokuapp.com"
 };

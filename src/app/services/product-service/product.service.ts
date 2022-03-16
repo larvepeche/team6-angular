@@ -30,7 +30,7 @@ export class ProductService {
     }
 
     getTopProducts(callback: any) {
-        return this.http.get<IProduct[]>(`${this.apiUrl}/api/products/`, {
+        return this.http.get<IProduct[]>(`${this.apiUrl}/api/products/top/5`, {
             headers: {
                 "Accept": 'application/json',
                 "Content-Type": 'application/json',

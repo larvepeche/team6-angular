@@ -5,6 +5,7 @@
 export const environment = {
     production: false,
     apiUrl: "http://192.168.88.32:8080"
+    //apiUrl: "https://team6-grails.herokuapp.com/"
 };
 
 /*

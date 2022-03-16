@@ -34,6 +34,9 @@ export class HomeComponent implements OnInit {
         });
         this.productService.getTopProducts((resp: IProduct[]) => {
             this.products = resp;
+            this.products.map(product => {
+                product.image = this.productService.apiUrl + "/static/product-image/" + product.id + "-" + product.image;
+            });
         });
     }
 
