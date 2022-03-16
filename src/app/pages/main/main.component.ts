@@ -14,9 +14,6 @@ export class MainComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
-        if (!localStorage.getItem(User.userLocalStorage)) {
-            this.router.navigate(['/connect']);
-        }
     }
 
 }
