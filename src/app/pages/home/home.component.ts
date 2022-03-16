@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef, Renderer2 } from '@angular/core';
 import { IProduct } from 'src/app/models/iproduct';
+import { ProductService } from 'src/app/services/product-service/product.service';
 import { IBanner, UtilService } from 'src/app/services/util-service/util.service';
 
 @Component({
@@ -19,16 +20,20 @@ export class HomeComponent implements OnInit {
 
     constructor(
         private renderer: Renderer2,
-        private utilService: UtilService
+        private utilService: UtilService,
+        private productService: ProductService
     ) { }
 
     ngOnInit(): void {
-        this.utilService.getBanner().subscribe(resp => {
+        this.utilService.getBanner((resp: IBanner[]) => {
             this.slideList = resp;
             this.slideList.map(slide => {
                 slide.image = this.utilService.apiUrl + "/static/banner-image/" + slide.id + "-" + slide.image;
             });
             this.slideNumber = this.slideList.length;
+        });
+        this.productService.getTopProducts((resp: IProduct[]) => {
+            this.products = resp;
         });
     }
 

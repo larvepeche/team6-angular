@@ -24,7 +24,7 @@ export class UtilService {
     ) {
         this.apiUrl = environment.apiUrl;
     }
-    getBanner(): Observable<IBanner[]> {
+    getBanner(callback: any) {
         return this.http.get<IBanner[]>(`${this.apiUrl}/api/banners`, {
             headers: {
                 "Accept": 'application/json',
@@ -32,6 +32,8 @@ export class UtilService {
                 //@ts-ignore
                 "Authorization": JSON.parse(localStorage.getItem(User.userLocalStorage)).token
             }
+        }).subscribe(resp => {
+            callback(resp)
         });
     }
 }

@@ -28,4 +28,17 @@ export class ProductService {
             }
         });
     }
+
+    getTopProducts(callback: any) {
+        return this.http.get<IProduct[]>(`${this.apiUrl}/api/products/`, {
+            headers: {
+                "Accept": 'application/json',
+                "Content-Type": 'application/json',
+                //@ts-ignore
+                "Authorization": JSON.parse(localStorage.getItem(User.userLocalStorage)).token
+            }
+        }).subscribe(resp => {
+            callback(resp);
+        });
+    }
 }
