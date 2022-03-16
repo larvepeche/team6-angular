@@ -17,7 +17,7 @@ export class UserService {
         this.apiUrl = environment.apiUrl;
     }
 
-    login(user: IUser) {
+    login(user: IUser, callBack: any) {
         const reqData = {
             username: user.username,
             password: user.password
@@ -34,6 +34,7 @@ export class UserService {
                 token: `${resp.token_type} ${resp.access_token}`,
             }
             localStorage.setItem(User.userLocalStorage, JSON.stringify(user));
+            callBack();
         });
     }
 }

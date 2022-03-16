@@ -17,8 +17,8 @@
                 <a class="nav-link" [routerLink]="'cart'" routerLinkActive="active">
                     <mat-icon class="icon icon-sm material-icons-outlined">shopping_cart</mat-icon>
                 </a>
-                <a class="nav-link" [routerLink]="'connect'" routerLinkActive="active">
-                    <mat-icon class="icon icon-sm material-icons-outlined">account_circle</mat-icon>
+                <a class="nav-link" (click)="logout()">
+                    <mat-icon class="icon icon-sm material-icons-outlined">logout</mat-icon>
                 </a>
             </div>
             <!-- <div class="menu">
