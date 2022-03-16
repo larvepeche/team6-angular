@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IProduct } from 'src/app/models/iproduct';
+import { ProductService } from 'src/app/services/product-service/product.service';
 
 @Component({
     selector: 'app-products',
@@ -8,21 +9,19 @@ import { IProduct } from 'src/app/models/iproduct';
 })
 export class ProductsComponent implements OnInit {
 
-    products: IProduct[] = [
-        { id: 1, img: "assets/bao-bao-GREEBEtyR9Y-unsplash.jpg", name: "bao bao GREEBE", price: 50000 },
-        { id: 2, img: "assets/bao-bao-GREEBEtyR9Y-unsplash.jpg", name: "bao bao GREEBE", price: 50000 },
-        { id: 3, img: "assets/bao-bao-GREEBEtyR9Y-unsplash.jpg", name: "bao bao GREEBE", price: 50000 },
-        { id: 4, img: "assets/bao-bao-GREEBEtyR9Y-unsplash.jpg", name: "bao bao GREEBE", price: 50000 },
-        { id: 5, img: "assets/bao-bao-GREEBEtyR9Y-unsplash.jpg", name: "bao bao GREEBE", price: 50000 },
-        { id: 6, img: "assets/bao-bao-GREEBEtyR9Y-unsplash.jpg", name: "bao bao GREEBE", price: 50000 },
-        { id: 7, img: "assets/bao-bao-GREEBEtyR9Y-unsplash.jpg", name: "bao bao GREEBE", price: 50000 },
-        { id: 8, img: "assets/bao-bao-GREEBEtyR9Y-unsplash.jpg", name: "bao bao GREEBE", price: 50000 },
-        { id: 9, img: "assets/bao-bao-GREEBEtyR9Y-unsplash.jpg", name: "bao bao GREEBE", price: 50000 },
-    ];
+    products: IProduct[] = [];
 
-    constructor() { }
+    constructor(
+        private productService: ProductService
+    ) { }
 
     ngOnInit(): void {
+        this.productService.getProducts().subscribe(resp => {
+            this.products = resp;
+            this.products.map(product => {
+                product.image = this.productService.apiUrl + "/static/product-image/" + product.id + "-" + product.image;
+            });
+        })
     }
 
 }

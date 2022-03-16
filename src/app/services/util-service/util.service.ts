@@ -24,20 +24,7 @@ export class UtilService {
     ) {
         this.apiUrl = environment.apiUrl;
     }
-
-    // getBanner(): Observable<Banner[]> {
-    //     return this.http.get<Banner[]>(`${this.apiUrl}/api/banners`, {
-    //         headers: {
-    //             "Accept": 'application/json',
-    //             "Content-Type": 'application/json',
-    //             "Authorization": (<IUser>JSON.parse(localStorage.getItem(User.userLocalStorage))).token
-    //         }
-    //     });
-    // }
     getBanner(): Observable<IBanner[]> {
-        //@ts-ignore
-        console.log((JSON.parse(localStorage.getItem(User.userLocalStorage))).token);
-
         return this.http.get<IBanner[]>(`${this.apiUrl}/api/banners`, {
             headers: {
                 "Accept": 'application/json',

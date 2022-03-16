@@ -15,13 +15,7 @@ export class HomeComponent implements OnInit {
     slideNumber: number = 0;
     slideList: IBanner[] = [];
 
-    products: IProduct[] = [
-        { id: 1, img: "assets/bao-bao-GREEBEtyR9Y-unsplash.jpg", name: "bao bao GREEBE", price: 50000 },
-        { id: 2, img: "assets/bao-bao-GREEBEtyR9Y-unsplash.jpg", name: "bao bao GREEBE", price: 50000 },
-        { id: 3, img: "assets/bao-bao-GREEBEtyR9Y-unsplash.jpg", name: "bao bao GREEBE", price: 50000 },
-        { id: 4, img: "assets/bao-bao-GREEBEtyR9Y-unsplash.jpg", name: "bao bao GREEBE", price: 50000 },
-        { id: 5, img: "assets/bao-bao-GREEBEtyR9Y-unsplash.jpg", name: "bao bao GREEBE", price: 50000 },
-    ];
+    products: IProduct[] = [];
 
     constructor(
         private renderer: Renderer2,
