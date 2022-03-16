@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild, ElementRef, Renderer2 } from '@angular/core';
-import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { IProduct } from 'src/app/models/iproduct';
 
 @Component({
@@ -8,8 +7,6 @@ import { IProduct } from 'src/app/models/iproduct';
     styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-    faChevronRight = faChevronRight;
-    faChevronLeft = faChevronLeft;
 
     @ViewChild("slides") slides?: ElementRef;
     @ViewChild("slideIndexes") slideIndexes?: ElementRef;
@@ -17,11 +14,11 @@ export class HomeComponent implements OnInit {
     slideNumber: number = 3;
 
     products: IProduct[] = [
-        { img: "assets/bao-bao-GREEBEtyR9Y-unsplash.jpg", name: "bao bao GREEBE", price: 50000 },
-        { img: "assets/bao-bao-GREEBEtyR9Y-unsplash.jpg", name: "bao bao GREEBE", price: 50000 },
-        { img: "assets/bao-bao-GREEBEtyR9Y-unsplash.jpg", name: "bao bao GREEBE", price: 50000 },
-        { img: "assets/bao-bao-GREEBEtyR9Y-unsplash.jpg", name: "bao bao GREEBE", price: 50000 },
-        { img: "assets/bao-bao-GREEBEtyR9Y-unsplash.jpg", name: "bao bao GREEBE", price: 50000 },
+        { id: 1, img: "assets/bao-bao-GREEBEtyR9Y-unsplash.jpg", name: "bao bao GREEBE", price: 50000 },
+        { id: 2, img: "assets/bao-bao-GREEBEtyR9Y-unsplash.jpg", name: "bao bao GREEBE", price: 50000 },
+        { id: 3, img: "assets/bao-bao-GREEBEtyR9Y-unsplash.jpg", name: "bao bao GREEBE", price: 50000 },
+        { id: 4, img: "assets/bao-bao-GREEBEtyR9Y-unsplash.jpg", name: "bao bao GREEBE", price: 50000 },
+        { id: 5, img: "assets/bao-bao-GREEBEtyR9Y-unsplash.jpg", name: "bao bao GREEBE", price: 50000 },
     ];
 
     constructor(

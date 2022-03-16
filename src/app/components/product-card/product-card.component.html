@@ -1,6 +1,14 @@
 <ng-container *ngIf="product">
-    <div class="product-card">
-        <img src="{{ product.img }}" alt="{{ product.name }}">
+    <div id="{{ product.id }}" class="product-card">
+        <div class="card-pic">
+            <ng-container *ngIf="!isInCart; else productIsInCart">
+                <mat-icon class="icon icon-md cart-icon material-icons-outlined" (click)="addToCart()">add_shopping_cart</mat-icon>
+            </ng-container>
+            <ng-template #productIsInCart>
+                <mat-icon class="icon icon-md cart-icon" (click)="removeToCart()">shopping_cart</mat-icon>
+            </ng-template>
+            <img src="{{ product.img }}" alt="{{ product.name }}">
+        </div>
         <div class="card-body">
             <p class="product-name">{{ product.name }}</p>
             <p class="product-price">Ar {{ product.price | number: '1.2-2'}}</p>
