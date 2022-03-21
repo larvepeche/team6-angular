@@ -2,7 +2,7 @@
     <app-section-header headerText="all products"></app-section-header>
     <app-products-list [products]="products"></app-products-list>
     <div class="product-pagination">
-        <a class="page-i">
+        <a class="page-i" (click)="nextPrevPage(-1)">
             <mat-icon class="icon icon-sm">chevron_left</mat-icon>
             prev
         </a>
@@ -11,7 +11,7 @@
         <a class="page-i">3</a>
         <a class="page-i dots">...</a>
         <a class="page-i">20</a>
-        <a class="page-i" href="">
+        <a class="page-i" (click)="nextPrevPage(1)">
             next
             <mat-icon class="icon icon-sm">chevron_right</mat-icon>
         </a>

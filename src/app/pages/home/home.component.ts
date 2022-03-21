@@ -25,14 +25,15 @@ export class HomeComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
-        this.utilService.getBanner((resp: IBanner[]) => {
+        this.utilService.getBanner().subscribe((resp: IBanner[]) => {
             this.slideList = resp;
             this.slideList.map(slide => {
                 slide.image = this.utilService.apiUrl + "/static/banner-image/" + slide.id + "-" + slide.image;
             });
             this.slideNumber = this.slideList.length;
         });
-        this.productService.getTopProducts((resp: IProduct[]) => {
+
+        this.productService.getTopProducts().subscribe((resp: IProduct[]) => {
             this.products = resp;
             this.products.map(product => {
                 product.image = this.productService.apiUrl + "/static/product-image/" + product.id + "-" + product.image;
