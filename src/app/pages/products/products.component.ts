@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IProduct } from 'src/app/models/iproduct';
+import { Product } from 'src/app/models/product';
 import { ProductService } from 'src/app/services/product-service/product.service';
 
 @Component({
@@ -11,34 +12,41 @@ export class ProductsComponent implements OnInit {
 
     products: IProduct[] = [];
     page: number = 1;
+    productsNb: number = 1;
+    paginationState: number = 0;
 
     constructor(
         private productService: ProductService
     ) { }
 
     ngOnInit(): void {
-        this.productService.getProductsPagination(this.page).subscribe((resp: IProduct[]) => {
-            this.products = resp;
-            this.products.map(product => {
-                product.image = this.productService.apiUrl + "/static/product-image/" + product.id + "-" + product.image;
-            });
-        });
+        this.displayProduct();
     }
 
     nextPrevPage(shift: number) {
-        if (shift + this.page <= 0) return;
+        this.changePaginationState(shift);
+        if (this.paginationState != 0) return;
         this.page += shift;
-        this.productService.getProductsPagination(this.page).subscribe((resp: IProduct[]) => {
-            this.products = resp;
-            this.products.map(product => {
+        this.displayProduct();
+    }
+
+    changePaginationState(shift: number) {
+        this.paginationState = 0;
+        if (this.page + shift == 0) {
+            this.paginationState = -1;
+        } else if (this.page + shift == Math.ceil(this.productsNb / Product.productsNbPerPage)) {
+            this.paginationState = 1;
+        }
+    }
+
+    displayProduct() {
+        this.productService.getProductsPagination(this.page).subscribe(([productList, productsNb]) => {
+            this.products = productList;
+            this.productsNb = productsNb;
+            this.products.map((product: IProduct) => {
                 product.image = this.productService.apiUrl + "/static/product-image/" + product.id + "-" + product.image;
             });
         });
-    }
-
-    goToPage() {
-        // this.productService.getProductsPagination(this.page, () => {
-        // });
     }
 
 }

@@ -6,4 +6,5 @@ export class Product implements IProduct {
     name = '';
     price = 0;
     static cartLocalStorage: string = "cart";
+    static productsNbPerPage: number = 5;
 }
