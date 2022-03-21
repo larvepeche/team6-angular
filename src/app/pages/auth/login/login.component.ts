@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { EmptyError } from 'rxjs';
 import { IUser } from 'src/app/models/iuser';
 import { UserService } from 'src/app/services/user-service/user.service';
 
@@ -30,8 +31,10 @@ export class LoginComponent implements OnInit {
             username: this.loginForm.get('username')?.value,
             password: this.loginForm.get('pwd')?.value
         }
-        this.userService.login(this.user, () => {
+        this.userService.login(this.user).subscribe(() => {
             this.router.navigate(['/home']);
+        }, (error: EmptyError) => {
+            console.log('Username or password doesn\' exist', error);
         });
     }
 }

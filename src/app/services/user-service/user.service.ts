@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { first } from 'rxjs';
 import { IUser } from 'src/app/models/iuser';
 import { User } from 'src/app/models/user';
 import { environment } from 'src/environments/environment';
@@ -17,24 +18,23 @@ export class UserService {
         this.apiUrl = environment.apiUrl;
     }
 
-    login(user: IUser, callBack: any) {
+    login(user: IUser) {
         const reqData = {
             username: user.username,
             password: user.password
         }
-        console.log(JSON.stringify(reqData));
         return this.http.post<any>(`${this.apiUrl}/api/login`, JSON.stringify(reqData), {
             headers: {
                 "Accept": 'application/json',
                 "Content-Type": 'application/json',
             }
-        }).subscribe(resp => {
-            let user: IUser = {
+        }).pipe(first(resp => {
+            const user: IUser = {
                 username: resp.username,
                 token: `${resp.token_type} ${resp.access_token}`,
-            }
+            };
             localStorage.setItem(User.userLocalStorage, JSON.stringify(user));
-            callBack();
-        });
+            return true;
+        }));
     }
 }
