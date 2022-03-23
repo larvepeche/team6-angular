@@ -49,4 +49,7 @@ export class ProductsComponent implements OnInit {
         });
     }
 
+    search(searchValue: string) {
+        console.log(searchValue);
+    }
 }

@@ -1,7 +1,28 @@
-.header-text {
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     padding: 35px 0;
+}
+
+.header-text {
     text-transform: uppercase;
     font-weight: 700;
     letter-spacing: 10px;
     font-size: var(--fs-500);
+}
+
+.header-searchbar {
+    position: relative;
+
+    .icon {
+        position: absolute;
+        padding: 10px 10px 10px 10px;
+        cursor: pointer;
+    }
+
+    input {
+        padding: 10px 5px 10px 47px;
+        font-size: var(--fs-400);
+    }
 }

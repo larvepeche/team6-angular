@@ -9,6 +9,7 @@ import { ProductsListComponent } from 'src/app/components/products-list/products
 import { SectionHeaderComponent } from 'src/app/components/section-header/section-header.component';
 import { CartComponent } from '../cart/cart.component';
 import { MatIconModule } from '@angular/material/icon';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { MatIconModule } from '@angular/material/icon';
     ],
     imports: [
         CommonModule,
+        FormsModule,
         MainRoutingModule,
         MatIconModule
     ]
