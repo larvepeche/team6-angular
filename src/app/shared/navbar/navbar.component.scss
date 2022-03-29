@@ -53,6 +53,8 @@ nav {
                 padding: 30px 40px 30px 0;
                 text-transform: uppercase;
                 letter-spacing: 2px;
+                display: flex;
+                align-items: center;
 
                 &:hover {
                     color: $color-secondary;
