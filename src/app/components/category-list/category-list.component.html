@@ -1,0 +1,3 @@
+<ng-container *ngFor="let categ of categories">
+    <app-category [category]="categ" (onCheckBoxEdit)="onCheckBoxEdit($event, categ.id)"></app-category>
+</ng-container>

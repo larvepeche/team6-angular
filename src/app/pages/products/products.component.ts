@@ -52,4 +52,8 @@ export class ProductsComponent implements OnInit {
     search(searchValue: string) {
         console.log(searchValue);
     }
+
+    onCategSelected(value: any) {
+        console.log(value);
+    }
 }

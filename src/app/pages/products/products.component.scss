@@ -8,12 +8,21 @@
 .products-container {
     width: 100%;
 
-    .products-list {
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        gap: 30px;
-        grid-gap: 30px;
+    .product-categ {
+        display: flex;
+
+        .product-section {
+            margin-left: 20px;
+            flex: 1 1 0;
+        }
     }
+
+    // .products-list {
+    //     display: grid;
+    //     grid-template-columns: repeat(5, 1fr);
+    //     gap: 30px;
+    //     grid-gap: 30px;
+    // }
 
     .product-pagination {
         padding: 30px 0;

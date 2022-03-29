@@ -1,0 +1,39 @@
+ul {
+    li {
+        list-style: none;
+
+
+
+        label {
+            margin-left: 10px;
+            text-transform: capitalize;
+        }
+    }
+}
+
+.main-container {
+    margin-bottom: 10px;
+    padding: 0;
+
+    .main-categ {
+        font-size: var(--fs-500);
+        font-weight: 700;
+
+        input {
+            width: 20px;
+            height: 20px;
+        }
+    }
+
+    .sub-container {
+        margin-top: 10px;
+
+        .sub-categ {
+            margin-top: 5px;
+        }
+    }
+}
+
+.category {
+    padding: 0 15px 0 0;
+}

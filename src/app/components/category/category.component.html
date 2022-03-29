@@ -1,0 +1,14 @@
+<div class="category">
+    <ul class="main-container">
+        <li class="main-categ">
+            <input type="checkbox" (change)="onCheckboxAllChange($event)" id="{{ 'main-categ' + category.id }}" />
+            <label for="{{ 'main-categ' + category.id }}">{{ category.name }}</label>
+        </li>
+        <ul class="sub-container">
+            <li class="sub-categ" *ngFor="let subCateg of category.subCategories">
+                <input class="{{'sub-categ-input' + category.id }}" id="{{subCateg.id}}" type="checkbox" [value]="subCateg.id" (change)="onCheckboxChange($event)" />
+                <label for="{{subCateg.id}}">{{ subCateg.name }}</label>
+            </li>
+        </ul>
+    </ul>
+</div>

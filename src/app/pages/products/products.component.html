@@ -1,19 +1,24 @@
 <div class="products-container">
     <app-section-header headerText="all products" [showSearchBar]="true" (onSearch)="search($event)"></app-section-header>
-    <app-products-list [products]="products"></app-products-list>
-    <div class="product-pagination">
-        <a class="page-i" (click)="nextPrevPage(-1)">
-            <mat-icon class="icon icon-sm">chevron_left</mat-icon>
-            prev
-        </a>
-        <a class="page-i">1</a>
-        <a class="page-i dots">...</a>
-        <a class="page-i">2</a>
-        <a class="page-i dots">...</a>
-        <a class="page-i">20</a>
-        <a class="page-i" (click)="nextPrevPage(1)">
-            next
-            <mat-icon class="icon icon-sm">chevron_right</mat-icon>
-        </a>
+    <div class="product-categ">
+        <app-category-list (onCategSelected)="onCategSelected($event)"></app-category-list>
+        <div class="product-section">
+            <app-products-list [products]="products"></app-products-list>
+            <div class="product-pagination">
+                <a class="page-i" (click)="nextPrevPage(-1)">
+                    <mat-icon class="icon icon-sm">chevron_left</mat-icon>
+                    prev
+                </a>
+                <a class="page-i">1</a>
+                <a class="page-i dots">...</a>
+                <a class="page-i">2</a>
+                <a class="page-i dots">...</a>
+                <a class="page-i">20</a>
+                <a class="page-i" (click)="nextPrevPage(1)">
+                    next
+                    <mat-icon class="icon icon-sm">chevron_right</mat-icon>
+                </a>
+            </div>
+        </div>
     </div>
 </div>
