@@ -28,7 +28,12 @@
   </ol>
 </details> -->
 
+## User
 
+* Username: Naruto
+* Pwd: password
+
+Démo: <a href="https://team6-angular-itu.herokuapp.com/">Lamba</a>
 
 ## Home
 
