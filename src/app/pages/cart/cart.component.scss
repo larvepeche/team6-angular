@@ -1,0 +1,37 @@
+.cart-container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+
+    .product-list {
+        width: 50%;
+    }
+
+    .total {
+        width: 25%;
+        padding: 0 50px;
+        height: fit-content;
+
+        .sub-total-section {
+            display: flex;
+            justify-content: space-between;
+            font-size: var(--fs-500);
+            text-transform: capitalize;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            margin-top: 20px;
+            padding: 10px 0;
+            border: none;
+            background-color: #006637;
+            color: white;
+            font-size: var(--fs-400);
+            text-transform: uppercase;
+        }
+    }
+}
+
+.disable-checkout {
+    background-color: #586861 !important;
+}

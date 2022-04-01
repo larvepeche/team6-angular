@@ -42,6 +42,7 @@ export class LoginComponent implements OnInit {
                     next(resp: IProduct[]) {
                         resp.map((product: IProduct) => {
                             product.image = that.productService.apiUrl + "/static/product-image/" + product.id + "-" + product.image;
+                            product.qtyCart = 1;
                         });
                         localStorage.setItem(Product.cartLocalStorage, JSON.stringify(resp));
                         that.router.navigate(['/page/home']);

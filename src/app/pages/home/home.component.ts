@@ -45,6 +45,7 @@ export class HomeComponent implements OnInit {
                 that.products = resp;
                 that.products.map(product => {
                     product.image = that.productService.apiUrl + "/static/product-image/" + product.id + "-" + product.image;
+                    product.qtyCart = 1;
                 });
             }, error(error) {
                 that.userService.sessErrorHandler(error);

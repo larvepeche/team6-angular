@@ -10,6 +10,8 @@ export class ProductsListComponent implements OnInit {
 
     @Input() products?: IProduct[];
     @Output() rmProductInCart = new EventEmitter();
+    @Input() cart: boolean = false;
+    @Output() qtyError: EventEmitter<boolean> = new EventEmitter<boolean>();
 
     constructor() { }
 
@@ -18,5 +20,10 @@ export class ProductsListComponent implements OnInit {
 
     removeProductInCart() {
         this.rmProductInCart.emit();
+    }
+
+    onQtyError(value: boolean) {
+        console.log(this.products);
+        this.qtyError.emit(value);
     }
 }

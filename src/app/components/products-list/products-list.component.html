@@ -1,5 +1,5 @@
-<div class="products-list">
+<div class="products-list" [ngClass]="cart?'cart-display':''">
     <ng-container *ngFor="let product of products">
-        <app-product-card [product]="product" (removeProductInCart)="removeProductInCart()"></app-product-card>
+        <app-product-card [product]="product" (removeProductInCart)="removeProductInCart()" [cart]="cart" [ngClass]="cart?'cart-product':''" (qtyError)="onQtyError($event)"></app-product-card>
     </ng-container>
 </div>

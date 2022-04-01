@@ -1,4 +1,14 @@
 <div class="cart-container">
-    <app-section-header headerText="cart products"></app-section-header>
-    <app-products-list [products]="products" (rmProductInCart)="rmProductInCart()"></app-products-list>
+    <div class="product-list">
+        <app-section-header headerText="cart products"></app-section-header>
+        <app-products-list [products]="products" (rmProductInCart)="rmProductInCart()" [cart]="true" (qtyError)="onQtyError($event)"></app-products-list>
+    </div>
+    <div class="total">
+        <app-section-header headerText="total"></app-section-header>
+        <div class="sub-total-section">
+            <span>sub-total</span>
+            <span>Ar {{total | number: '1.2-2'}}</span>
+        </div>
+        <button class="checkout-btn" (click)="checkout()" [ngClass]="disableCheckout?'disable-checkout':''">checkout</button>
+    </div>
 </div>

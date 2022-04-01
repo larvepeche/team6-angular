@@ -47,8 +47,11 @@ export class ProductsComponent implements OnInit {
             next([productList, productsNb]) {
                 that.products = productList;
                 that.productsNb = productsNb;
+                console.log(that.products);
+
                 that.products.map((product: IProduct) => {
                     product.image = that.productService.apiUrl + "/static/product-image/" + product.id + "-" + product.image;
+                    product.qtyCart = 1;
                 });
             },
             error(error) {

@@ -14,6 +14,9 @@ export class ProductCardComponent implements OnInit {
     @Output() removeProductInCart = new EventEmitter();
     isInCart: boolean = false;
     products: IProduct[] = <IProduct[]>JSON.parse(localStorage.getItem(Product.cartLocalStorage) || '[]');
+    @Input() cart: boolean = false;
+
+    @Output() qtyError: EventEmitter<boolean> = new EventEmitter<boolean>();
 
     constructor(
         private productService: ProductService
@@ -75,5 +78,12 @@ export class ProductCardComponent implements OnInit {
             }
         });
         return index;
+    }
+
+    onProductQtyChange() {
+        //@ts-ignore
+        if (this.product?.quantity - this.product?.qtyCart < 0 || this.product?.qtyCart <= 0)
+            return this.qtyError.emit(true);
+        this.qtyError.emit(false);
     }
 }

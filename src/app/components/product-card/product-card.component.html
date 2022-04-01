@@ -1,17 +1,40 @@
 <ng-container *ngIf="product">
-    <div id="{{ product.id }}" class="product-card">
-        <div class="card-pic">
-            <ng-container *ngIf="!isInCart; else productIsInCart">
-                <mat-icon class="icon icon-md cart-icon material-icons-outlined" (click)="addToCart()">add_shopping_cart</mat-icon>
-            </ng-container>
-            <ng-template #productIsInCart>
-                <mat-icon class="icon icon-md cart-icon" (click)="removeToCart()">shopping_cart</mat-icon>
-            </ng-template>
-            <img src="{{ product.image }}" alt="{{ product.name }}">
+    <ng-container *ngIf="!cart; else cartDisplay">
+        <div id="{{ product.id }}" class="product-card">
+            <div class="card-pic">
+                <ng-container *ngIf="!isInCart; else productIsInCart">
+                    <mat-icon class="icon icon-md cart-icon material-icons-outlined" (click)="addToCart()">add_shopping_cart</mat-icon>
+                </ng-container>
+                <ng-template #productIsInCart>
+                    <mat-icon class="icon icon-md cart-icon" (click)="removeToCart()">shopping_cart</mat-icon>
+                </ng-template>
+                <img src="{{ product.image }}" alt="{{ product.name }}">
+            </div>
+            <div class="card-body">
+                <p class="product-name">{{ product.name }}</p>
+                <p class="product-price">Ar {{ product.price | number: '1.2-2'}}</p>
+            </div>
         </div>
-        <div class="card-body">
-            <p class="product-name">{{ product.name }}</p>
-            <p class="product-price">Ar {{ product.price | number: '1.2-2'}}</p>
+    </ng-container>
+    <ng-template #cartDisplay>
+        <div id="{{ product.id }}" class="product-cart">
+            <div class="card-pic">
+                <img src="{{ product.image }}" alt="{{ product.name }}">
+            </div>
+            <div class="card-body">
+                <p class="product-name">{{ product.name }}</p>
+                <p class="product-price">Ar {{ product.price | number: '1.2-2'}}</p>
+                <div class="qty-section">
+                    <div class="qty">
+                        <label for="product-qty">qty</label>
+                        <input id="product-qty" type="number" [(ngModel)]="product.qtyCart" (change)="onProductQtyChange()">
+                    </div>
+                    <span class="max-qty">max : {{ product.quantity }}</span>
+                </div>
+            </div>
+            <span class="delete-product">
+                <mat-icon class="icon icon-md cart-icon material-icons-outlined" (click)="removeToCart()">close</mat-icon>
+            </span>
         </div>
-    </div>
+    </ng-template>
 </ng-container>

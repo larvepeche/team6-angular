@@ -1,21 +1,43 @@
 @import 'src/app/shared/variable.scss';
 
-:host{
-    width : 250px;
+:host {
+    width: 250px;
     max-width: 350px;
+    // width: 250px;
+    // max-width: 350px;
     flex-grow: 1;
 }
+
+:host-context(.cart-product) {
+    width: 100% !important;
+    max-width: none !important;
+}
+
+.card-pic {
+    position: relative;
+    overflow: hidden;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+}
+
+.product-price {
+    font-weight: 700;
+}
+
 .product-card {
     .card-pic {
-        position: relative;
-        height : 250px;
-        overflow: hidden;
+        height: 250px;
 
-        .mat-icon{
+        .mat-icon {
             background: rgba(255, 255, 255, 0.8);
-            padding : 15px;
+            padding: 15px;
             border-radius: 100%;
-            box-shadow: 0px 0px 15px -3px rgba(0,0,0,0.2);
+            box-shadow: 0px 0px 15px -3px rgba(0, 0, 0, 0.2);
         }
 
         .cart-icon {
@@ -26,16 +48,56 @@
             color: $color-secondary;
             cursor: pointer;
         }
+    }
+}
 
-        img {
-            width: 100%;
-            height: 100%;
-            // height: 500px;
-            object-fit: cover;
+.product-cart {
+    display: flex;
+    position: relative;
+
+    .card-pic {
+        height: 150px;
+        width: 150px;
+        margin-right: 30px;
+    }
+
+    .card-body {
+        .product-name {
+            margin-top: 0;
+        }
+
+        .qty-section {
+            display: flex;
+            align-items: center;
+            text-transform: capitalize;
+
+            .qty {
+                margin-right: 20px;
+
+                label {
+                    margin-right: 5px;
+                }
+
+                input {
+                    width: 80px;
+                    border: none;
+                    font-size: calc(var(--fs-400) - 2px);
+                    padding: 5px;
+                    text-align: right;
+
+                    &:focus {
+                        outline: none;
+                    }
+                }
+            }
         }
     }
 
-    .product-price {
-        font-weight: 700;
+    .delete-product {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        font-size: var(--fs-400);
+        cursor: pointer;
     }
 }
