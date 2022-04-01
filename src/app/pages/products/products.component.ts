@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IProduct } from 'src/app/models/iproduct';
 import { Product } from 'src/app/models/product';
 import { ProductService } from 'src/app/services/product-service/product.service';
+import { UserService } from 'src/app/services/user-service/user.service';
 
 @Component({
     selector: 'app-products',
@@ -16,7 +17,8 @@ export class ProductsComponent implements OnInit {
     paginationState: number = 0;
 
     constructor(
-        private productService: ProductService
+        private productService: ProductService,
+        private userService: UserService
     ) { }
 
     ngOnInit(): void {
@@ -40,12 +42,18 @@ export class ProductsComponent implements OnInit {
     }
 
     displayProduct() {
-        this.productService.getProductsPagination(this.page).subscribe(([productList, productsNb]) => {
-            this.products = productList;
-            this.productsNb = productsNb;
-            this.products.map((product: IProduct) => {
-                product.image = this.productService.apiUrl + "/static/product-image/" + product.id + "-" + product.image;
-            });
+        const that = this;
+        this.productService.getProductsPagination(this.page).subscribe({
+            next([productList, productsNb]) {
+                that.products = productList;
+                that.productsNb = productsNb;
+                that.products.map((product: IProduct) => {
+                    product.image = that.productService.apiUrl + "/static/product-image/" + product.id + "-" + product.image;
+                });
+            },
+            error(error) {
+                that.userService.sessErrorHandler(error);
+            }
         });
     }
 

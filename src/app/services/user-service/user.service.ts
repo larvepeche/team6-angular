@@ -1,9 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { first } from 'rxjs';
 import { IUser } from 'src/app/models/iuser';
 import { User } from 'src/app/models/user';
 import { environment } from 'src/environments/environment';
+import { ProductService } from '../product-service/product.service';
 
 @Injectable({
     providedIn: 'root'
@@ -14,6 +16,8 @@ export class UserService {
 
     constructor(
         private http: HttpClient,
+        private router: Router,
+        private productService: ProductService
     ) {
         this.apiUrl = environment.apiUrl;
     }
@@ -34,7 +38,25 @@ export class UserService {
                 token: `${resp.token_type} ${resp.access_token}`,
             };
             localStorage.setItem(User.userLocalStorage, JSON.stringify(user));
+            this.productService.getCartProducts().subscribe({
+                next(resp) {
+                    console.log(resp);
+                }, error() {
+                    console.log(resp);
+                }
+            });
             return true;
         }));
+    }
+
+    sessErrorHandler(error: any) {
+        if (error?.status == 401) {
+            this.router.navigate(['/connect']);
+        }
+    }
+
+    getToken() {
+        const userStorage = JSON.parse(localStorage.getItem(User.userLocalStorage) || 'null');
+        return userStorage ? userStorage.token : "";
     }
 }

@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild, ElementRef, Renderer2 } from '@angular/core';
+import { Router } from '@angular/router';
 import { IProduct } from 'src/app/models/iproduct';
 import { ProductService } from 'src/app/services/product-service/product.service';
+import { UserService } from 'src/app/services/user-service/user.service';
 import { IBanner, UtilService } from 'src/app/services/util-service/util.service';
 
 @Component({
@@ -21,23 +23,32 @@ export class HomeComponent implements OnInit {
     constructor(
         private renderer: Renderer2,
         private utilService: UtilService,
-        private productService: ProductService
+        private productService: ProductService,
+        private userService: UserService
     ) { }
 
     ngOnInit(): void {
-        this.utilService.getBanner().subscribe((resp: IBanner[]) => {
-            this.slideList = resp;
-            this.slideList.map(slide => {
-                slide.image = this.utilService.apiUrl + "/static/banner-image/" + slide.id + "-" + slide.image;
-            });
-            this.slideNumber = this.slideList.length;
+        const that = this;
+        this.utilService.getBanner().subscribe({
+            next(resp: IBanner[]) {
+                that.slideList = resp;
+                that.slideList.map(slide => {
+                    slide.image = that.utilService.apiUrl + "/static/banner-image/" + slide.id + "-" + slide.image;
+                });
+                that.slideNumber = that.slideList.length;
+            }, error(error) {
+                that.userService.sessErrorHandler(error);
+            }
         });
-
-        this.productService.getTopProducts().subscribe((resp: IProduct[]) => {
-            this.products = resp;
-            this.products.map(product => {
-                product.image = this.productService.apiUrl + "/static/product-image/" + product.id + "-" + product.image;
-            });
+        this.productService.getTopProducts().subscribe({
+            next(resp: IProduct[]) {
+                that.products = resp;
+                that.products.map(product => {
+                    product.image = that.productService.apiUrl + "/static/product-image/" + product.id + "-" + product.image;
+                });
+            }, error(error) {
+                that.userService.sessErrorHandler(error);
+            }
         });
     }
 

@@ -4,6 +4,7 @@ import { combineLatest, Observable, Subscription } from 'rxjs';
 import { IProduct } from 'src/app/models/iproduct';
 import { User } from 'src/app/models/user';
 import { environment } from 'src/environments/environment';
+import { UserService } from '../user-service/user.service';
 
 @Injectable({
     providedIn: 'root'
@@ -13,7 +14,8 @@ export class ProductService {
     apiUrl = '';
 
     constructor(
-        private http: HttpClient
+        private http: HttpClient,
+        private userService: UserService
     ) {
         this.apiUrl = environment.apiUrl;
     }
@@ -24,7 +26,7 @@ export class ProductService {
                 "Accept": 'application/json',
                 "Content-Type": 'application/json',
                 //@ts-ignore
-                "Authorization": JSON.parse(localStorage.getItem(User.userLocalStorage)).token
+                "Authorization": this.userService.getToken()
             }
         });
     }
@@ -35,33 +37,42 @@ export class ProductService {
                 "Accept": 'application/json',
                 "Content-Type": 'application/json',
                 //@ts-ignore
-                "Authorization": JSON.parse(localStorage.getItem(User.userLocalStorage)).token
+                "Authorization": this.userService.getToken()
             }
         });
     }
 
     getProductsPagination(page: number) {
-        return combineLatest([this.getProductsAtPage(page), this.getProductsNb()]);
+        const token = this.userService.getToken();
+        return combineLatest([this.getProductsAtPage(page, token), this.getProductsNb(token)]);
     }
 
-    getProductsAtPage(page: number): Observable<IProduct[]> {
+    getProductsAtPage(page: number, token: string): Observable<IProduct[]> {
         return this.http.get<IProduct[]>(`${this.apiUrl}/api/products/list?page=${page}`, {
             headers: {
                 "Accept": 'application/json',
                 "Content-Type": 'application/json',
-                //@ts-ignore
-                "Authorization": JSON.parse(localStorage.getItem(User.userLocalStorage)).token
+                "Authorization": token
             }
         });
     }
 
-    getProductsNb() {
+    getProductsNb(token: string) {
         return this.http.get<number>(`${this.apiUrl}/api/products/count`, {
             headers: {
                 "Accept": 'application/json',
                 "Content-Type": 'application/json',
-                //@ts-ignore
-                "Authorization": JSON.parse(localStorage.getItem(User.userLocalStorage)).token
+                "Authorization": token
+            }
+        });
+    }
+
+    getCartProducts() {
+        return this.http.get<number>(`${this.apiUrl}/api/users/panier`, {
+            headers: {
+                "Accept": 'application/json',
+                "Content-Type": 'application/json',
+                "Authorization": this.userService.getToken()
             }
         });
     }

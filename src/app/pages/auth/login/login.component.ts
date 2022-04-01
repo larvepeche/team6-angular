@@ -27,14 +27,18 @@ export class LoginComponent implements OnInit {
     }
 
     onConnect() {
+        const that = this;
         this.user = {
             username: this.loginForm.get('username')?.value,
             password: this.loginForm.get('pwd')?.value
         }
-        this.userService.login(this.user).subscribe(() => {
-            this.router.navigate(['/home']);
-        }, (error: EmptyError) => {
-            console.log('Username or password doesn\' exist', error);
+        this.userService.login(this.user).subscribe({
+            next() {
+                that.router.navigate(['/page/home']);
+            },
+            error(error: EmptyError) {
+                console.log('Username or password doesn\' exist', error);
+            }
         });
     }
 }
