@@ -68,7 +68,27 @@ export class ProductService {
     }
 
     getCartProducts() {
-        return this.http.get<number>(`${this.apiUrl}/api/users/panier`, {
+        return this.http.get<IProduct[]>(`${this.apiUrl}/api/users/panier`, {
+            headers: {
+                "Accept": 'application/json',
+                "Content-Type": 'application/json',
+                "Authorization": this.userService.getToken()
+            }
+        });
+    }
+
+    addProductToCart(productId: number) {
+        return this.http.post<any>(`${this.apiUrl}/api/users/panier/${productId}`, null, {
+            headers: {
+                "Accept": 'application/json',
+                "Content-Type": 'application/json',
+                "Authorization": this.userService.getToken()
+            }
+        });
+    }
+
+    deleteProductToCart(productId: number) {
+        return this.http.delete<any>(`${this.apiUrl}/api/users/panier/${productId}`, {
             headers: {
                 "Accept": 'application/json',
                 "Content-Type": 'application/json',

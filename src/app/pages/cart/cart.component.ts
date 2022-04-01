@@ -17,13 +17,6 @@ export class CartComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
-        this.productService.getCartProducts().subscribe({
-            next(resp) {
-                console.log(resp);
-            }, error(error) {
-                console.log(error);
-            }
-        });
     }
 
     rmProductInCart() {

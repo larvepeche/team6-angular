@@ -2,7 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { first } from 'rxjs';
+import { IProduct } from 'src/app/models/iproduct';
 import { IUser } from 'src/app/models/iuser';
+import { Product } from 'src/app/models/product';
 import { User } from 'src/app/models/user';
 import { environment } from 'src/environments/environment';
 import { ProductService } from '../product-service/product.service';
@@ -16,8 +18,7 @@ export class UserService {
 
     constructor(
         private http: HttpClient,
-        private router: Router,
-        private productService: ProductService
+        private router: Router
     ) {
         this.apiUrl = environment.apiUrl;
     }
@@ -38,13 +39,6 @@ export class UserService {
                 token: `${resp.token_type} ${resp.access_token}`,
             };
             localStorage.setItem(User.userLocalStorage, JSON.stringify(user));
-            this.productService.getCartProducts().subscribe({
-                next(resp) {
-                    console.log(resp);
-                }, error() {
-                    console.log(resp);
-                }
-            });
             return true;
         }));
     }

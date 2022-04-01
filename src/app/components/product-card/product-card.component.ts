@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IProduct } from 'src/app/models/iproduct';
 import { Product } from 'src/app/models/product';
+import { ProductService } from 'src/app/services/product-service/product.service';
 
 @Component({
     selector: 'app-product-card',
@@ -14,7 +15,9 @@ export class ProductCardComponent implements OnInit {
     isInCart: boolean = false;
     products: IProduct[] = <IProduct[]>JSON.parse(localStorage.getItem(Product.cartLocalStorage) || '[]');
 
-    constructor() { }
+    constructor(
+        private productService: ProductService
+    ) { }
 
     ngOnInit(): void {
         if (this.productExistInCart() >= 0) {
@@ -28,11 +31,18 @@ export class ProductCardComponent implements OnInit {
             this.isInCart = true;
             return;
         }
-        this.products = <IProduct[]>JSON.parse(localStorage.getItem(Product.cartLocalStorage) || '[]');
-        this.products.push(this.product);
-        localStorage.setItem(Product.cartLocalStorage, JSON.stringify(this.products));
-        console.log(localStorage.getItem(Product.cartLocalStorage));
-        this.isInCart = true;
+        const that = this;
+        this.productService.addProductToCart(this.product.id).subscribe({
+            next() {
+                that.products = <IProduct[]>JSON.parse(localStorage.getItem(Product.cartLocalStorage) || '[]');
+                //@ts-ignore
+                that.products.push(that.product);
+                localStorage.setItem(Product.cartLocalStorage, JSON.stringify(that.products));
+                that.isInCart = true;
+            }, error(error) {
+                console.log(error);
+            }
+        })
     }
 
     removeToCart() {
@@ -40,12 +50,18 @@ export class ProductCardComponent implements OnInit {
         let index = this.productExistInCart();
         if (index < 0)
             return;
-        this.products = <IProduct[]>JSON.parse(localStorage.getItem(Product.cartLocalStorage) || '[]');
-        this.products.splice(index, 1);
-        localStorage.setItem(Product.cartLocalStorage, JSON.stringify(this.products));
-        this.isInCart = false;
-        console.log(localStorage.getItem(Product.cartLocalStorage));
-        this.removeProductInCart.emit();
+        const that = this;
+        this.productService.deleteProductToCart(this.product.id).subscribe({
+            next() {
+                that.products = <IProduct[]>JSON.parse(localStorage.getItem(Product.cartLocalStorage) || '[]');
+                that.products.splice(index, 1);
+                localStorage.setItem(Product.cartLocalStorage, JSON.stringify(that.products));
+                that.isInCart = false;
+                that.removeProductInCart.emit();
+            }, error(error) {
+                console.log(error);
+            }
+        })
     }
 
     productExistInCart(): number {
