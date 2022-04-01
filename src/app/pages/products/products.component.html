@@ -1,7 +1,7 @@
 <div class="products-container">
     <app-section-header headerText="all products" [showSearchBar]="true" (onSearch)="search($event)"></app-section-header>
     <div class="product-categ">
-        <app-category-list (onCategSelected)="onCategSelected($event)"></app-category-list>
+        <!-- <app-category-list (onCategSelected)="onCategSelected($event)"></app-category-list> -->
         <div class="product-section">
             <app-products-list [products]="products"></app-products-list>
             <div class="product-pagination">
