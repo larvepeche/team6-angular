@@ -35,7 +35,7 @@ export class ProductCardComponent implements OnInit {
             return;
         }
         const that = this;
-        this.productService.addProductToCart(this.product.id).subscribe({
+        this.productService.addProductToCart(this.product.id, this.product.qtyCart).subscribe({
             next() {
                 that.products = <IProduct[]>JSON.parse(localStorage.getItem(Product.cartLocalStorage) || '[]');
                 //@ts-ignore

@@ -25,7 +25,6 @@ export class ProductService {
             headers: {
                 "Accept": 'application/json',
                 "Content-Type": 'application/json',
-                //@ts-ignore
                 "Authorization": this.userService.getToken()
             }
         });
@@ -36,7 +35,6 @@ export class ProductService {
             headers: {
                 "Accept": 'application/json',
                 "Content-Type": 'application/json',
-                //@ts-ignore
                 "Authorization": this.userService.getToken()
             }
         });
@@ -77,8 +75,9 @@ export class ProductService {
         });
     }
 
-    addProductToCart(productId: number) {
-        return this.http.post<any>(`${this.apiUrl}/api/users/panier/${productId}`, null, {
+    addProductToCart(productId: number, productQty: number) {
+        console.log(this.userService.getToken());
+        return this.http.post<any>(`${this.apiUrl}/api/users/panier/${productId}/${productQty}`, null, {
             headers: {
                 "Accept": 'application/json',
                 "Content-Type": 'application/json',
