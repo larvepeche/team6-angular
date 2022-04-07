@@ -10,7 +10,7 @@ import { ProductService } from 'src/app/services/product-service/product.service
 })
 export class CartComponent implements OnInit {
 
-    products: IProduct[] = <IProduct[]>JSON.parse(localStorage.getItem(Product.cartLocalStorage) || '[]');
+    products: IProduct[] = [];
     total: number = 0;
     disableCheckout: boolean = false;
 
@@ -19,6 +19,7 @@ export class CartComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
+        this.products = <IProduct[]>JSON.parse(localStorage.getItem(Product.cartLocalStorage) || '[]');
         this.productsPrice();
     }
 
@@ -30,7 +31,16 @@ export class CartComponent implements OnInit {
     checkout() {
         if (this.disableCheckout)
             return;
-
+        const that = this;
+        this.products.forEach(product => {
+            this.productService.addProductToCart(product.id, product.qtyCart).subscribe({
+                next() {
+                    localStorage.setItem(Product.cartLocalStorage, JSON.stringify(that.products));
+                }, error(error) {
+                    console.log(error);
+                }
+            })
+        })
     }
 
     onQtyError(value: boolean) {
