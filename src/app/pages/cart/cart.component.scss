@@ -35,3 +35,19 @@
 .disable-checkout {
     background-color: #586861 !important;
 }
+
+@media only screen and (max-width: 768px) {
+
+    .cart-container {
+        flex-direction: column-reverse;
+
+        .product-list {
+            width: 100%;
+        }
+
+        .total {
+            width: 100%;
+            padding: 0;
+        }
+    }
+}
